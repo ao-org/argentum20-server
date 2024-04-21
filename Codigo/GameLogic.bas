@@ -282,7 +282,11 @@ Private Function CheckMapRestrictions(ByVal UserIndex As Integer, ByVal Map As I
                 Exit Function
             End If
 
-106         If MapInfo(Map).Newbie And Not EsNewbie(UserIndex) Then
+
+            Dim ZonaId As Integer
+            ZonaId = MapData(Pos.Map).Tile(Pos.X, Pos.Y).ZonaId
+            
+106         If MapInfo(Map).Newbie Or Zona(ZonaId).Newbie And Not EsNewbie(UserIndex) Then
 108             If .flags.UltimoMensaje <> 101 Then
 110                 Call WriteConsoleMsg(UserIndex, "Sólo los newbies pueden entrar a este mapa.", e_FontTypeNames.FONTTYPE_INFO)
 112                 .flags.UltimoMensaje = 101

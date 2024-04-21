@@ -659,6 +659,10 @@ Sub Main()
 226         Call LoadMapData
         End If
         
+        frmCargando.Label1(2).Caption = "Cargando Zonas y Areas"
+        DoEvents
+        Call LoadZonas
+        
         frmCargando.Label1(2).Caption = "Cargando donadores"
         Call CargarDonadores
         

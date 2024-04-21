@@ -2406,6 +2406,7 @@ Public Type t_User
     Invent_bk As t_Inventario
     
     Pos As t_WorldPos
+    ZonaId As Integer
     
     ConnectionDetails As t_ConnectionInfo
     
@@ -2700,6 +2701,7 @@ Public Type t_Npc
     Veneno As Byte
 
     Pos As t_WorldPos 'Posicion
+    ZonaId As Integer
     Orig As t_WorldPos
 
     Movement As e_TipoAI
@@ -2803,6 +2805,8 @@ Public Type t_MapBlock
     ParticulaIndex As Integer
     Luz As t_light
     Trap As clsTrap
+    ZonaId As Integer
+    
 End Type
 
 Public Enum e_MapSetting

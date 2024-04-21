@@ -2851,6 +2851,7 @@ Private Sub WarpMascotas(ByVal UserIndex As Integer)
 On Error GoTo WarpMascotas_Err
         Dim i                As Integer
         Dim petType          As Integer
+        Dim ZonaSegura       As Boolean
         Dim PermiteMascotas  As Boolean
         Dim Index            As Integer
         Dim iMinHP           As Integer
@@ -2859,6 +2860,7 @@ On Error GoTo WarpMascotas_Err
         Dim ElementalQuitado As Boolean
         Dim SpawnInvalido    As Boolean
 
+        ZonaSegura = Zona(UserList(UserIndex).ZonaId).Segura = 1
         PermiteMascotas = MapInfo(UserList(UserIndex).Pos.Map).NoMascotas = False
 
 102     For i = 1 To MAXMASCOTAS

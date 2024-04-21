@@ -1640,6 +1640,11 @@ Public Function PuedeAtacar(ByVal AttackerIndex As Integer, ByVal VictimIndex As
         End If
 
         'Estas en un Mapa Seguro?
+        If Zona(UserList(VictimIndex).ZonaId).Segura = 1 Then
+            Debug.Print "Seguro por Zona"
+        End If
+        
+        
 196     If MapInfo(UserList(VictimIndex).Pos.Map).Seguro = 1 Then
 198         If esArmada(AttackerIndex) Then
 200             If UserList(AttackerIndex).Faccion.RecompensasReal >= 3 Then
