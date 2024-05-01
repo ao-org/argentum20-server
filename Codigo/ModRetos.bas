@@ -1050,7 +1050,7 @@ Public Function PuedeReto(ByVal UserIndex As Integer) As Boolean
 
 106         If .Pos.Map = 0 Or .Pos.X = 0 Or .Pos.Y = 0 Then Exit Function
             
-108         If MapInfo(.Pos.Map).Seguro = 0 Then Exit Function
+108         If MapInfo(.Pos.Map).Seguro = 0 Or Zona(.ZonaId).Segura = 0 Then Exit Function
         
 110         If .flags.EnTorneo Then Exit Function
             

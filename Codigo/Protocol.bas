@@ -3217,7 +3217,7 @@ Private Sub HandleWorkLeftClick(ByVal UserIndex As Integer)
 500             Case e_Skill.Robar
 
                     'Does the map allow us to steal here?
-502                 If MapInfo(.Pos.Map).Seguro = 0 Then
+502                 If MapInfo(.Pos.Map).Seguro = 0 Or Zona(.ZonaId).Segura = 0 Then
                     
                         'Check interval
 504                     If Not IntervaloPermiteTrabajarExtraer(UserIndex) Then Exit Sub
@@ -5789,7 +5789,7 @@ Private Sub HandleCommerceStart(ByVal UserIndex As Integer)
                 End If
  
                 'Check if map is not safe
-                If MapInfo(.Pos.Map).Seguro = 0 Then
+                If MapInfo(.Pos.Map).Seguro = 0 Or Zona(.ZonaId).Segura = 0 Then
                     Call FinComerciarUsu(.flags.targetUser.ArrayIndex, True)
                     Call WriteConsoleMsg(UserIndex, "No se puede usar el comercio seguro en zona insegura.", e_FontTypeNames.FONTTYPE_INFO)
                     Exit Sub
@@ -8336,10 +8336,10 @@ Private Sub HandleMoveItem(ByVal UserIndex As Integer)
                     End If
     
                     'Cambiamos si alguno es un anillo
-214                 If .Invent.DañoMagicoEqpSlot = SlotViejo Then
-216                     .Invent.DañoMagicoEqpSlot = SlotNuevo
-218                 ElseIf .Invent.DañoMagicoEqpSlot = SlotNuevo Then
-220                     .Invent.DañoMagicoEqpSlot = SlotViejo
+214                 If .invent.DañoMagicoEqpSlot = SlotViejo Then
+216                     .invent.DañoMagicoEqpSlot = SlotNuevo
+218                 ElseIf .invent.DañoMagicoEqpSlot = SlotNuevo Then
+220                     .invent.DañoMagicoEqpSlot = SlotViejo
 
                     End If
 
@@ -8554,7 +8554,7 @@ Private Sub HandleLlamadadeClan(ByVal UserIndex As Integer)
 104             clan_nivel = modGuilds.NivelDeClan(.GuildIndex)
 
 106             If clan_nivel >= 2 Then
-108                 Call SendData(SendTarget.ToGuildMembers, .GuildIndex, PrepareMessageConsoleMsg("Clan> [" & .name & "] solicita apoyo de su clan en " & get_map_name(.pos.Map) & " (" & .pos.Map & "-" & .pos.x & "-" & .pos.y & "). Puedes ver su ubicación en el mapa del mundo.", e_FontTypeNames.FONTTYPE_GUILD))
+108                 Call SendData(SendTarget.ToGuildMembers, .GuildIndex, PrepareMessageConsoleMsg("Clan> [" & .name & "] solicita apoyo de su clan en " & get_map_name(.Pos.Map) & " (" & .Pos.Map & "-" & .Pos.X & "-" & .Pos.Y & "). Puedes ver su ubicación en el mapa del mundo.", e_FontTypeNames.FONTTYPE_GUILD))
 110                 Call SendData(SendTarget.ToGuildMembers, .GuildIndex, PrepareMessagePlayWave("43", NO_3D_SOUND, NO_3D_SOUND))
 112                 Call SendData(SendTarget.ToGuildMembers, .GuildIndex, PrepareMessageUbicacionLlamada(.Pos.Map, .Pos.X, .Pos.Y))
 
@@ -8716,7 +8716,7 @@ Private Sub HandleBusquedaTesoro(ByVal UserIndex As Integer)
                         Else
 
 148                         If BusquedaNpcActiva Then
-150                             Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Eventos> Todavía nadie logró matar el NPC que se encuentra en el mapa " & NpcList(npc_index_evento).pos.Map & ".", e_FontTypeNames.FONTTYPE_TALK))
+150                             Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Eventos> Todavía nadie logró matar el NPC que se encuentra en el mapa " & NpcList(npc_index_evento).Pos.Map & ".", e_FontTypeNames.FONTTYPE_TALK))
 152                             Call WriteConsoleMsg(UserIndex, "Ya hay una busqueda de npc activo. El tesoro se encuentra en: " & NpcList(npc_index_evento).Pos.Map & "-" & NpcList(npc_index_evento).Pos.X & "-" & NpcList(npc_index_evento).Pos.Y, e_FontTypeNames.FONTTYPE_INFO)
                             Else
 154                             Call WriteConsoleMsg(UserIndex, "Ya hay una busqueda del tesoro activa.", e_FontTypeNames.FONTTYPE_INFO)

@@ -2670,7 +2670,7 @@ Sub Cerrar_Usuario(ByVal UserIndex As Integer, Optional ByVal forceClose As Bool
             
 116             Call WriteLocaleMsg(UserIndex, "203", e_FontTypeNames.FONTTYPE_INFO, .Counters.Salir)
             
-118             If EsGM(UserIndex) Or MapInfo(.Pos.map).Seguro = 1 Or forceClose Then
+118             If EsGM(UserIndex) Or MapInfo(.Pos.Map).Seguro = 1 Or Zona(.ZonaId).Segura = 1 Or forceClose Or Zona(.ZonaId).Segura = 0 Then
 120                 Call WriteDisconnect(UserIndex)
 122                 Call CloseSocket(UserIndex)
                 End If

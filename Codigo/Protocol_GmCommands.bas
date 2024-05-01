@@ -1890,7 +1890,7 @@ Public Sub HandleReviveChar(ByVal UserIndex As Integer)
 116                 With UserList(tUser.ArrayIndex)
 118                     If .flags.Muerto = 1 Then
                             If UserList(UserIndex).flags.Privilegios And e_PlayerType.SemiDios Then
-                                If MapInfo(.Pos.map).Seguro = 0 Or EsMapaEvento(.Pos.map) = False Then
+                                If MapInfo(.Pos.Map).Seguro = 0 Or Zona(.ZonaId).Segura = 0 Or EsMapaEvento(.Pos.Map) = False Then
                                      Call WriteConsoleMsg(UserIndex, "Servidor » No puedes revivir en una zona insegura.", e_FontTypeNames.FONTTYPE_INFO)
                                      Exit Sub
                                 End If

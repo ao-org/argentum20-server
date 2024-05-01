@@ -1658,8 +1658,8 @@ Sub EquiparInvItem(ByVal UserIndex As Integer, ByVal Slot As Byte)
                         .Invent.ResistenciaEqpObjIndex = .Invent.Object(Slot).ObjIndex
 530                     .Invent.ResistenciaEqpSlot = Slot
                         Call WriteUpdateRM(userindex)
-                    ElseIf ObjData(.invent.Object(Slot).objIndex).OBJType = e_OBJType.otDañoMagico Then
-528                     .invent.DañoMagicoEqpObjIndex = .invent.Object(Slot).objIndex
+                    ElseIf ObjData(.invent.Object(Slot).ObjIndex).OBJType = e_OBJType.otDañoMagico Then
+528                     .invent.DañoMagicoEqpObjIndex = .invent.Object(Slot).ObjIndex
                         .invent.DañoMagicoEqpSlot = Slot
 538                     Call WriteUpdateDM(userindex)
                         
@@ -1791,7 +1791,7 @@ Sub UseInvItem(ByVal UserIndex As Integer, ByVal Slot As Byte, ByVal ByClick As 
             If TimeSinceLastUse < obj.Cooldown Then Exit Sub
             
             If IsSet(obj.ObjFlags, e_ObjFlags.e_UseOnSafeAreaOnly) Then
-                If MapInfo(.pos.Map).Seguro = 0 Then
+                If MapInfo(.Pos.Map).Seguro = 0 Or Zona(.ZonaId).Segura = 0 Then
                     Call WriteConsoleMsg(UserIndex, "Solo podes usar este objeto en mapas seguros.", e_FontTypeNames.FONTTYPE_INFO)
                     Exit Sub
                 End If
@@ -2937,7 +2937,7 @@ Sub UseInvItem(ByVal UserIndex As Integer, ByVal Slot As Byte, ByVal ByClick As 
             
 1138                 If obj.Real Then '¿Es el Cuerno Real?
 1140                     If FaccionPuedeUsarItem(UserIndex, ObjIndex) Then
-1142                         If MapInfo(.Pos.Map).Seguro = 1 Then
+1142                         If MapInfo(.Pos.Map).Seguro = 1 Or Zona(.ZonaId).Segura = 1 Then
 1144                             Call WriteConsoleMsg(UserIndex, "No hay Peligro aquí. Es Zona Segura ", e_FontTypeNames.FONTTYPE_INFO)
                                       Exit Sub
     
@@ -2954,7 +2954,7 @@ Sub UseInvItem(ByVal UserIndex As Integer, ByVal Slot As Byte, ByVal ByClick As 
 1150                 ElseIf obj.Caos Then '¿Es el Cuerno Legión?
     
 1152                     If FaccionPuedeUsarItem(UserIndex, ObjIndex) Then
-1154                         If MapInfo(.Pos.Map).Seguro = 1 Then
+1154                         If MapInfo(.Pos.Map).Seguro = 1 Or Zona(.ZonaId).Segura = 1 Then
 1156                             Call WriteConsoleMsg(UserIndex, "No hay Peligro aquí. Es Zona Segura ", e_FontTypeNames.FONTTYPE_INFO)
                                       Exit Sub
     
@@ -3122,7 +3122,7 @@ Sub UseInvItem(ByVal UserIndex As Integer, ByVal Slot As Byte, ByVal ByClick As 
     
                        End If
                         
-1318                If MapInfo(.Pos.Map).Seguro = 0 And .flags.Muerto = 0 Then
+1318                If MapInfo(.Pos.Map).Seguro = 0 Or Zona(.ZonaId).Segura = 0 And .flags.Muerto = 0 Then
 1320                    Call WriteConsoleMsg(UserIndex, "Solo podes usar tu runa en zonas seguras.", e_FontTypeNames.FONTTYPE_INFO)
                            Exit Sub
     
@@ -3485,7 +3485,7 @@ On Error GoTo ResurrectWithItem_Err
 106     CanHelpResult = UserMod.CanHelpUser(UserIndex, targetUser)
         If UserList(TargetUser).flags.SeguroResu Then
             Call WriteConsoleMsg(UserIndex, "El usuario tiene el seguro de resurrección activado.", e_FontTypeNames.FONTTYPE_INFO)
-            Call WriteConsoleMsg(TargetUser, UserList(UserIndex).Name & " está intentando revivirte. Desactiva el seguro de resurrección para permitirle hacerlo.", e_FontTypeNames.FONTTYPE_INFO)
+            Call WriteConsoleMsg(TargetUser, UserList(UserIndex).name & " está intentando revivirte. Desactiva el seguro de resurrección para permitirle hacerlo.", e_FontTypeNames.FONTTYPE_INFO)
             Exit Sub
         End If
         If CanHelpResult <> eInteractionOk Then

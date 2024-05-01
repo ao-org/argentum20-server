@@ -2014,7 +2014,7 @@ On Error GoTo ErrHandler
                 Exit Sub
             End If
             
-            If MapInfo(.Pos.map).Seguro = 1 Then
+            If MapInfo(.Pos.Map).Seguro = 1 Or Zona(.ZonaId).Segura = 1 Then
 120             Call SendData(SendTarget.ToIndex, UserIndex, PrepareMessageArmaMov(.Char.charindex, 0))
             Else
                 Call SendData(SendTarget.ToPCAliveArea, UserIndex, PrepareMessageArmaMov(.Char.charindex, 0))
@@ -2068,7 +2068,7 @@ On Error GoTo ErrHandler
             bonificacionPescaLvl(46) = 2#
             bonificacionPescaLvl(47) = 2.5
         
-                If MapInfo(.Pos.map).Seguro Or RedDePesca Then
+                If MapInfo(.Pos.Map).Seguro Or RedDePesca Or Zona(.ZonaId).Segura Then
                     Select Case ObjData(.Invent.HerramientaEqpObjIndex).Power
                         Case 1 'Caña comun
                             bonificacionCaña = 1
@@ -2815,7 +2815,7 @@ Public Sub DoTalar(ByVal UserIndex As Integer, ByVal X As Byte, ByVal Y As Byte,
     
 144             Call WriteTextCharDrop(UserIndex, "+" & MiObj.amount, .Char.CharIndex, vbWhite)
 
-                If MapInfo(.Pos.Map).Seguro = 1 Then
+                If MapInfo(.Pos.Map).Seguro = 1 Or Zona(.ZonaId).Segura = 1 Then
 146                 Call SendData(SendTarget.ToIndex, UserIndex, PrepareMessagePlayWave(SND_TALAR, .Pos.X, .Pos.Y))
                 Else
 145                 Call SendData(SendTarget.toPCAliveArea, UserIndex, PrepareMessagePlayWave(SND_TALAR, .Pos.X, .Pos.y))
@@ -2939,7 +2939,7 @@ Public Sub DoMineria(ByVal UserIndex As Integer, ByVal X As Byte, ByVal Y As Byt
 139             Call WriteTextCharDrop(UserIndex, "+" & MiObj.amount, .Char.CharIndex, vbWhite)
 
 140             Call WriteConsoleMsg(UserIndex, "¡Has extraido algunos minerales!", e_FontTypeNames.FONTTYPE_INFO)
-                If MapInfo(.Pos.Map).Seguro = 1 Then
+                If MapInfo(.Pos.Map).Seguro = 1 Or Zona(.ZonaId).Segura = 1 Then
 141                 Call SendData(SendTarget.ToIndex, UserIndex, PrepareMessagePlayWave(15, .Pos.X, .Pos.Y))
                 Else
 142                 Call SendData(SendTarget.toPCAliveArea, UserIndex, PrepareMessagePlayWave(15, .Pos.X, .Pos.y))
@@ -3410,7 +3410,7 @@ On Error GoTo FishOrThrowNet_Err:
 100 With UserList(UserIndex)
 102     If ObjData(.invent.HerramientaEqpObjIndex).OBJType <> e_OBJType.otHerramientas Then Exit Sub
 104     If ObjData(.invent.HerramientaEqpObjIndex).Subtipo = e_ToolsSubtype.eFishingNet Then
-106         If MapInfo(.pos.map).Seguro = 1 Or _
+106         If MapInfo(.Pos.Map).Seguro = 1 Or Zona(.ZonaId).Segura = 1 Or _
                 Not ExpectObjectTypeAt(e_OBJType.otFishingPool, .pos.map, .Trabajo.Target_X, .Trabajo.Target_Y) Then
 108             If IsValidUserRef(.flags.TargetUser) Or IsValidNpcRef(.flags.TargetNPC) Then
 110                 ThrowNetToTarget (UserIndex)

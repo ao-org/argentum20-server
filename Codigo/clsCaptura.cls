@@ -579,7 +579,7 @@ Public Sub inscribirse(ByVal UserIndex As Integer)
         End If
         
         'Zona segura
-        If MapInfo(.Pos.map).Seguro = 0 Then
+        If MapInfo(.Pos.Map).Seguro = 0 Or Zona(.ZonaId).Segura = 0 Then
             Call WriteConsoleMsg(UserIndex, "Solamente podrás ingresar al evento en zona segura.", e_FontTypeNames.FONTTYPE_INFO)
             Exit Sub
         End If

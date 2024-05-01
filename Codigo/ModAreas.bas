@@ -353,7 +353,7 @@ Private Sub NotifyUser(ByVal UserNotificado As Integer, ByVal UserIngresante As 
             If Not EsGM(UserNotificado) Or CompararPrivilegios(.flags.Privilegios, UserList(UserIngresante).flags.Privilegios) <= 0 Then
                 sendChar = False
             End If
-         ElseIf UserList(UserNotificado).flags.Muerto = 1 And MapInfo(.pos.Map).Seguro = 0 And (UserList(UserNotificado).GuildIndex = 0 Or UserList(UserNotificado).GuildIndex <> UserList(UserIngresante).GuildIndex Or modGuilds.NivelDeClan(UserList(UserIngresante).GuildIndex) < 6) And Not IsSet(UserList(UserIngresante).flags.StatusMask, e_StatusMask.eTalkToDead) Then
+         ElseIf UserList(UserNotificado).flags.Muerto = 1 And MapInfo(.Pos.Map).Seguro = 0 Or Zona(.ZonaId).Segura = 0 And (UserList(UserNotificado).GuildIndex = 0 Or UserList(UserNotificado).GuildIndex <> UserList(UserIngresante).GuildIndex Or modGuilds.NivelDeClan(UserList(UserIngresante).GuildIndex) < 6) And Not IsSet(UserList(UserIngresante).flags.StatusMask, e_StatusMask.eTalkToDead) Then
             sendChar = False
         End If
             
