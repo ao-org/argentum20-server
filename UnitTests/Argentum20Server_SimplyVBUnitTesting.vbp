@@ -1,0 +1,36 @@
+Type=Exe
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
+Reference=*\G{3E4F7CEC-C640-49F1-80D9-8DD42421CB1B}#5.0#0#..\..\..\..\windows\SysWow64\SimplyVBUnitType.tlb#SimplyVBUnit 5.0 Type Library
+Object={7983BD3B-752A-43EA-9BFF-444BBA1FC293}#5.0#0; SimplyVBUnit.Component.ocx
+Form=frmTestRunner.frm
+Startup="frmTestRunner"
+HelpFile=""
+Command32=""
+Name="Argentum20Server_SimplyVBUnitTesting"
+HelpContextID="0"
+CompatibleMode="0"
+MajorVer=1
+MinorVer=0
+RevisionVer=0
+AutoIncrementVer=0
+ServerSupportFiles=0
+VersionCompanyName="Home"
+CompilationType=0
+OptimizationType=0
+FavorPentiumPro(tm)=0
+CodeViewDebugInfo=0
+NoAliasing=0
+BoundsCheck=0
+OverflowCheck=0
+FlPointCheck=0
+FDIVCheck=0
+UnroundedFP=0
+StartMode=0
+Unattended=0
+Retained=0
+ThreadPerObject=0
+MaxNumberOfThreads=1
+DebugStartupOption=0
+
+[MS Transaction Server]
+AutoRefresh=1

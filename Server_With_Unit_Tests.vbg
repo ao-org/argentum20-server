@@ -1,0 +1,3 @@
+VBGROUP 5.0
+Project=Server.VBP
+StartupProject=UnitTests\Argentum20Server_SimplyVBUnitTesting.vbp
