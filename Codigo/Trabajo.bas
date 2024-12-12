@@ -2338,15 +2338,15 @@ Public Sub DoRobar(ByVal LadronIndex As Integer, ByVal VictimaIndex As Integer)
 100     If UserList(LadronIndex).flags.Privilegios And (e_PlayerType.Consejero) Then Exit Sub
 102     If MapInfo(UserList(VictimaIndex).Pos.Map).Seguro = 1 Then Exit Sub
         If Not UserMod.CanMove(UserList(VictimaIndex).flags, UserList(VictimaIndex).Counters) Then
-'Msg1028= No podes robarle a objetivos inmovilizados.
-Call WriteLocaleMsg(LadronIndex, "1028", e_FontTypeNames.FONTTYPE_FIGHT)
+            'Msg1028= No podes robarle a objetivos inmovilizados.
+            Call WriteLocaleMsg(LadronIndex, "1028", e_FontTypeNames.FONTTYPE_FIGHT)
             Exit Sub
 
         End If
 
 104     If UserList(VictimaIndex).flags.EnConsulta Then
-'Msg1029= ¡No puedes robar a usuarios en consulta!
-Call WriteLocaleMsg(LadronIndex, "1029", e_FontTypeNames.FONTTYPE_INFO)
+            'Msg1029= ¡No puedes robar a usuarios en consulta!
+            Call WriteLocaleMsg(LadronIndex, "1029", e_FontTypeNames.FONTTYPE_INFO)
             Exit Sub
 
         End If
@@ -2357,8 +2357,8 @@ Call WriteLocaleMsg(LadronIndex, "1029", e_FontTypeNames.FONTTYPE_INFO)
 
             If esCiudadano(LadronIndex) Then
                 If (.flags.Seguro) Then
-'Msg1030= Debes quitarte el seguro para robarle a un ciudadano o a un miembro del Ejército Real
-Call WriteLocaleMsg(LadronIndex, "1030", e_FontTypeNames.FONTTYPE_FIGHT)
+                    'Msg1030= Debes quitarte el seguro para robarle a un ciudadano o a un miembro del Ejército Real
+                    Call WriteLocaleMsg(LadronIndex, "1030", e_FontTypeNames.FONTTYPE_FIGHT)
                     Exit Sub
 
                 End If
@@ -2366,8 +2366,8 @@ Call WriteLocaleMsg(LadronIndex, "1030", e_FontTypeNames.FONTTYPE_FIGHT)
             ElseIf esArmada(LadronIndex) Then ' Armada robando a armada or ciudadano?
 
 122             If (esCiudadano(VictimaIndex) Or esArmada(VictimaIndex)) Then
-'Msg1031= Los miembros del Ejército Real no tienen permitido robarle a ciudadanos o a otros miembros del Ejército Real
-Call WriteLocaleMsg(LadronIndex, "1031", e_FontTypeNames.FONTTYPE_FIGHT)
+                    'Msg1031= Los miembros del Ejército Real no tienen permitido robarle a ciudadanos o a otros miembros del Ejército Real
+                    Call WriteLocaleMsg(LadronIndex, "1031", e_FontTypeNames.FONTTYPE_FIGHT)
                     Exit Sub
 
                 End If
@@ -2375,8 +2375,8 @@ Call WriteLocaleMsg(LadronIndex, "1031", e_FontTypeNames.FONTTYPE_FIGHT)
             ElseIf esCaos(LadronIndex) Then ' Caos robando a caos?
 
                 If (esCaos(VictimaIndex)) Then
-'Msg1032= No puedes robar a otros miembros de la Legión Oscura.
-Call WriteLocaleMsg(LadronIndex, "1032", e_FontTypeNames.FONTTYPE_FIGHT)
+                    'Msg1032= No puedes robar a otros miembros de la Legión Oscura.
+                    Call WriteLocaleMsg(LadronIndex, "1032", e_FontTypeNames.FONTTYPE_FIGHT)
                     Exit Sub
 
                 End If
@@ -2389,8 +2389,8 @@ Call WriteLocaleMsg(LadronIndex, "1032", e_FontTypeNames.FONTTYPE_FIGHT)
                 'Si tiene clan me fijo si su clan es de alineación ciudadana
                 If esCiudadano(LadronIndex) And GuildAlignmentIndex(.GuildIndex) = e_ALINEACION_GUILD.ALINEACION_CIUDADANA Then
                     If PersonajeEsLeader(.Id) Then
-'Msg1033= No puedes robar siendo lider de un clan ciudadano.
-Call WriteLocaleMsg(LadronIndex, "1033", e_FontTypeNames.FONTTYPE_FIGHT)
+                        'Msg1033= No puedes robar siendo lider de un clan ciudadano.
+                        Call WriteLocaleMsg(LadronIndex, "1033", e_FontTypeNames.FONTTYPE_FIGHT)
                         Exit Sub
 
                     End If
@@ -2404,11 +2404,11 @@ Call WriteLocaleMsg(LadronIndex, "1033", e_FontTypeNames.FONTTYPE_FIGHT)
             ' Tiene energia?
 128         If .Stats.MinSta < 15 Then
 130             If .genero = e_Genero.Hombre Then
-'Msg1034= Estás muy cansado para robar.
-Call WriteLocaleMsg(LadronIndex, "1034", e_FontTypeNames.FONTTYPE_INFO)
+                    'Msg1034= Estás muy cansado para robar.
+                    Call WriteLocaleMsg(LadronIndex, "1034", e_FontTypeNames.FONTTYPE_INFO)
                 Else
-'Msg1035= Estás muy cansada para robar.
-Call WriteLocaleMsg(LadronIndex, "1035", e_FontTypeNames.FONTTYPE_INFO)
+                    'Msg1035= Estás muy cansada para robar.
+                    Call WriteLocaleMsg(LadronIndex, "1035", e_FontTypeNames.FONTTYPE_INFO)
 
                 End If
 
@@ -2419,8 +2419,8 @@ Call WriteLocaleMsg(LadronIndex, "1035", e_FontTypeNames.FONTTYPE_INFO)
 136         If .GuildIndex > 0 Then
 138             If .flags.SeguroClan And NivelDeClan(.GuildIndex) >= 3 Then
 140                 If .GuildIndex = UserList(VictimaIndex).GuildIndex Then
-'Msg1036= No podes robarle a un miembro de tu clan.
-Call WriteLocaleMsg(LadronIndex, "1036", e_FontTypeNames.FONTTYPE_INFOIAO)
+                        'Msg1036= No podes robarle a un miembro de tu clan.
+                        Call WriteLocaleMsg(LadronIndex, "1036", e_FontTypeNames.FONTTYPE_INFOIAO)
                         Exit Sub
 
                     End If
@@ -2578,7 +2578,7 @@ Call WriteLocaleMsg(OtroUserIndex, "1038", e_FontTypeNames.FONTTYPE_TALK)
 270                 Call SubirSkill(LadronIndex, e_Skill.Robar)
                 Else
 'Msg1039= ¡No has logrado robar nada!
-Call WriteLocaleMsg(LadronIndex, "1039", e_FontTypeNames.FONTTYPE_INFO)
+                    Call WriteLocaleMsg(LadronIndex, "1039", e_FontTypeNames.FONTTYPE_INFO)
 274                 Call WriteConsoleMsg(VictimaIndex, "¡" & .name & " ha intentado robarte!", e_FontTypeNames.FONTTYPE_INFO)
 276                 Call SubirSkill(LadronIndex, e_Skill.Robar)
 
@@ -2708,8 +2708,8 @@ Private Sub RobarObjeto(ByVal LadronIndex As Integer, ByVal VictimaIndex As Inte
                 End If
 
             Else
-'Msg1040= No has logrado robar ningun objeto.
-Call WriteLocaleMsg(LadronIndex, "1040", e_FontTypeNames.FONTTYPE_INFO)
+            'Msg1040= No has logrado robar ningun objeto.
+            Call WriteLocaleMsg(LadronIndex, "1040", e_FontTypeNames.FONTTYPE_INFO)
 
             End If
 
