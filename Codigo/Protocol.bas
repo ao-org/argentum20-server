@@ -3613,8 +3613,7 @@ Call WriteLocaleMsg(UserIndex, "1134", e_FontTypeNames.FONTTYPE_INFO)
 
 112             With Hechizos(Spell)
                     'Send information
-'Msg1135= HECINF*¬1
-Call WriteLocaleMsg(UserIndex, "1135", e_FontTypeNames.FONTTYPE_INFO, Spell)
+                    Call WriteConsoleMsg(UserIndex, "HECINF*" & Spell, e_FontTypeNames.FONTTYPE_INFO)
 
                 End With
 
