@@ -1671,6 +1671,10 @@ Public Sub AlquimistaConstruirItem(ByVal UserIndex As Integer, ByVal ItemIndex A
             If TieneHechizo(hIndex, UserIndex) Then
 106             UserList(UserIndex).Stats.MinSta = UserList(UserIndex).Stats.MinSta - 1
 108             Call WriteUpdateSta(UserIndex)
+
+                ' AGREGAR FX
+109             Call SendData(SendTarget.ToIndex, UserIndex, PrepareMessageParticleFX(UserList(UserIndex).Char.charindex, 253, 25, False, ObjData(ItemIndex).GrhIndex))
+
 110             Call AlquimistaQuitarMateriales(UserIndex, ItemIndex)
 112             Call SendData(SendTarget.ToPCAliveArea, UserIndex, PrepareMessagePlayWave(1152, UserList(UserIndex).pos.x, UserList(UserIndex).pos.y))
 
